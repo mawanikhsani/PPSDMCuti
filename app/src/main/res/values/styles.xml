@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="button" parent="Widget.AppCompat.Button">
+        <item name="android:background">#D2EAFF</item>
+    </style>
+</resources>
