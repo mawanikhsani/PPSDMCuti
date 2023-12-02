@@ -39,14 +39,12 @@
         <activity
             android:name=".activity.AdminHomeActivity"
             android:exported="false" />
-        <activity
-            android:name=".activity.HomeActivity"
-            android:exported="false" />
+
         <activity
             android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

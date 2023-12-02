@@ -146,6 +146,7 @@
                 android:text="Cuti PNS"
                 android:background="@drawable/btnhome"/>
             <Button
+                android:id="@+id/btnNONPNS"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginTop="25dp"

@@ -3,6 +3,7 @@ package com.example.ppsdmcuti.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import com.example.ppsdmcuti.R
 import com.example.ppsdmcuti.fragment.HistoryFragment
 import com.example.ppsdmcuti.fragment.HomeFragment
@@ -21,35 +22,33 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        loadFragment(HomeFragment())
-
         bottomNavigationView = findViewById(R.id.bottomNavigation)
 
-        bottomNavigationView.setOn;OnItemSelectedListener {
-            when (it.itemId){
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
                 R.id.nav_home -> {
-                    loadFragment(HomeFragment())
+                    replaceFragment(HomeFragment())
                     true
                 }
                 R.id.nav_history -> {
-                    loadFragment(HistoryFragment())
+                    replaceFragment(HistoryFragment())
                     true
                 }
                 R.id.nav_profile -> {
-                    loadFragment(ProfileFragment())
+                    replaceFragment(ProfileFragment())
                     true
                 }
-                else -> {
-                    loadFragment(HomeFragment())'
-                    true'
-                }
+                else -> false
             }
         }
+
+        bottomNavigationView.selectedItemId = R.id.nav_home
     }
 
-    private fun loadFragment(homeFragment: HomeFragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace((R.id.container, fragment))
-        transaction.commit()
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, fragment)
+            .commit()
     }
+
 }
