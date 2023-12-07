@@ -28,7 +28,7 @@
             android:name=".activity.PersetujuanActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.SplashScreenActivity"
+            android:name=".activity.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".activity.NonPnsActivity"
@@ -44,7 +44,7 @@
             android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.HomeActivity"
+            android:name=".activity.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

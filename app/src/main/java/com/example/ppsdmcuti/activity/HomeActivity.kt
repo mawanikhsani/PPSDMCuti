@@ -43,6 +43,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         bottomNavigationView.selectedItemId = R.id.nav_home
+
     }
 
     private fun replaceFragment(fragment: Fragment) {
@@ -50,5 +51,7 @@ class HomeActivity : AppCompatActivity() {
             .replace(R.id.container, fragment)
             .commit()
     }
+
+
 
 }

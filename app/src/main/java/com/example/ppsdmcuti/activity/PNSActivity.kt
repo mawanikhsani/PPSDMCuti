@@ -32,7 +32,7 @@ class PNSActivity : AppCompatActivity() {
         setContentView(R.layout.activity_pnsactivity)
 
         //inisialisasi button
-        btnTglAwal = findViewById(R.id.iBtntglAkhir)
+        btnTglAwal = findViewById(R.id.btnTglAwal)
         btnTglAkhir = findViewById(R.id.iBtntglAkhir)
         val uploadButton: Button = findViewById(R.id.btnUpDoc)
 

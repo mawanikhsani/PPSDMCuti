@@ -41,7 +41,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="NIP" />
+                    android:text="NIP"
+                    android:textColor="#000000" />
 
                 <TextView
                     android:id="@+id/tvNama"
@@ -49,6 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Nama"
+                    android:textColor="#000000"
                     android:textSize="32sp" />
 
                 <TextView
@@ -56,7 +58,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Jabatan" />
+                    android:text="Jabatan"
+                    android:textColor="#000000" />
             </LinearLayout>
         </LinearLayout>
 
@@ -83,19 +86,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/tvSisa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Sisa Cuti" />
+                    android:text="Sisa Cuti"
+                    android:textColor="#0B0B0B" />
+
                 <TextView
                     android:id="@+id/tvSisaCuti"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="24sp"
-                    android:text="8" />
+                    android:text="8"
+                    android:textColor="#0B0B0B"
+                    android:textSize="24sp" />
             </LinearLayout>
 
             <ImageView
@@ -110,19 +117,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/tvStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Status Pengajuan" />
+                    android:text="Status Pengajuan"
+                    android:textColor="#000000" />
+
                 <TextView
                     android:id="@+id/tvSStatusAJu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="24sp"
-                    android:text="Tidak Ada" />
+                    android:text="Tidak Ada"
+                    android:textColor="#000000"
+                    android:textSize="24sp" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -136,25 +147,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="14dp">
+
             <Button
                 android:id="@+id/btnPNS"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:background="@drawable/btnhome"
                 android:drawableTop="@drawable/baseline_article_24"
-                android:textSize="12sp"
-                android:textColor="@color/black"
                 android:text="Cuti PNS"
-                android:background="@drawable/btnhome"/>
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
             <Button
                 android:id="@+id/btnNONPNS"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginTop="25dp"
+                android:background="@drawable/btnhome"
                 android:drawableTop="@drawable/baseline_article_24"
-                android:textSize="12sp"
-                android:textColor="@color/black"
                 android:text="Cuti Non-PNS"
-                android:background="@drawable/btnhome"/>
+                android:textColor="@color/black"
+                android:textSize="12sp" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
