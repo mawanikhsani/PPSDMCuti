@@ -28,21 +28,28 @@
                     android:id="@+id/ivProfileUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:src="@tools:sample/avatars"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:src="@tools:sample/avatars" />
 
                 <ImageView
                     android:id="@+id/ivUbahFoto"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_margin="5dp"
+                    android:layout_marginEnd="48dp"
+                    android:layout_marginBottom="64dp"
+                    android:clickable="true"
+                    android:contentDescription="Pilih gambar dari galeri"
+                    android:onClick="selectImageFromGallery"
                     android:padding="7dp"
                     android:src="@drawable/baseline_camera_alt_24"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
