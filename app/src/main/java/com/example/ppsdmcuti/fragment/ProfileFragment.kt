@@ -33,7 +33,7 @@ class ProfileFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         ivProfileUser = view.findViewById(R.id.ivProfileUser)
-        ivUbahFoto = view.findViewById(R.id.ivUbahFoto)
+        ivUbahFoto = view.findViewById(R.id.btnUbahFoto)
 
         sharedPreferences =
             requireContext().getSharedPreferences("loginPrefs", Context.MODE_PRIVATE)

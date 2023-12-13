@@ -1,7 +1,10 @@
 package com.example.ppsdmcuti.activity
 
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -46,7 +49,11 @@ class PNSActivity : AppCompatActivity() {
     private lateinit var tvAlasan: TextView
     private lateinit var etAlasan: EditText
     private lateinit var btnAjukan: Button
+    private lateinit var tvitemdipilih: TextView
 
+    private val PICK_DOCUMENT_REQUEST = 1
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pnsactivity)
@@ -76,6 +83,7 @@ class PNSActivity : AppCompatActivity() {
         tvAlasan = findViewById(R.id.tvAlasan)
         etAlasan = findViewById(R.id.etAlasan)
         btnAjukan = findViewById(R.id.btnAjukan)
+        tvitemdipilih = findViewById(R.id.tvitemdipilih)
 
         // Set listener untuk ivBackHome
         ivBackHome.setOnClickListener {
@@ -102,6 +110,11 @@ class PNSActivity : AppCompatActivity() {
         // Set listener untuk etAlasan
         etAlasan.setOnClickListener {
 
+        }
+
+        btnUpDoc.setOnClickListener {
+            // Panggil metode untuk membuka file manager dan memilih dokumen
+            openFileManager()
         }
 
         // Set listener untuk btnAjukan
@@ -185,6 +198,38 @@ class PNSActivity : AppCompatActivity() {
             showDatePickerDialogAkhir(etTglAkhir)
         }
 
+    }
+
+    private fun openFileManager() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "*/*" // Semua jenis file
+        startActivityForResult(intent, PICK_DOCUMENT_REQUEST)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == PICK_DOCUMENT_REQUEST && resultCode == Activity.RESULT_OK) {
+            data?.data?.let { selectedFileUri ->
+                handleSelectedFile(selectedFileUri)
+            }
+        }
+    }
+
+    private fun handleSelectedFile(uri: Uri) {
+        val fileName = getFileName(uri)
+        tvitemdipilih.text = "Selected File: $fileName"
+
+    }
+
+    private fun getFileName(uri: Uri): String {
+        val cursor = contentResolver.query(uri, null, null, null, null)
+        cursor?.use {
+            val nameIndex = it.getColumnIndexOrThrow("_display_name")
+            it.moveToFirst()
+            return it.getString(nameIndex)
+        }
+        return "Unknown"
     }
 
     private fun showDatePickerDialogAwal(etTglAwal: EditText) {

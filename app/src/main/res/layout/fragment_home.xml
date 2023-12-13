@@ -27,7 +27,8 @@
                 android:layout_height="100dp"
                 android:layout_marginStart="10dp"
                 android:scaleType="centerCrop"
-                tools:src="@tools:sample/avatars" />
+                android:src="@drawable/cat2"
+                 />
 
             <LinearLayout
                 android:id="@+id/profil"
