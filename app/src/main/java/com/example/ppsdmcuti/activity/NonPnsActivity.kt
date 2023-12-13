@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.example.ppsdmcuti.R
 import java.util.Calendar
 
@@ -29,6 +30,7 @@ class NonPnsActivity : AppCompatActivity() {
     private lateinit var btnUpDoc: Button
     private lateinit var tvAlasan: TextView
     private lateinit var etAlasan: EditText
+    private lateinit var btnAjukan: Button
     private lateinit var tvitemdipilih: TextView
 
 
@@ -53,6 +55,7 @@ class NonPnsActivity : AppCompatActivity() {
         btnUpDoc = findViewById(R.id.btnUpDoc)
         tvAlasan = findViewById(R.id.tvAlasan)
         etAlasan = findViewById(R.id.etAlasan)
+        btnAjukan = findViewById(R.id.btnAjukan)
         tvitemdipilih = findViewById(R.id.tvitemdipilih)
 
 
@@ -73,6 +76,11 @@ class NonPnsActivity : AppCompatActivity() {
         btnUpDoc.setOnClickListener {
             // Panggil metode untuk membuka file manager dan memilih dokumen
             openFileManager()
+        }
+
+        btnAjukan.setOnClickListener {
+            // Menampilkan pemberitahuan "Berhasil mengajukan"
+            Toast.makeText(this, "Berhasil mengajukan", Toast.LENGTH_SHORT).show()
         }
 
         // Set listener untuk btnTglAwal

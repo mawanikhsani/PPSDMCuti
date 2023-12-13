@@ -1,27 +1,38 @@
 package com.example.ppsdmcuti.fragment
 
 import android.app.Activity
+import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.cardview.widget.CardView
 import com.example.ppsdmcuti.R
 import com.example.ppsdmcuti.activity.LoginActivity
 import de.hdodenhof.circleimageview.CircleImageView
+import java.io.File
+import java.io.FileOutputStream
+import android.graphics.Bitmap
+import java.io.InputStream
 
 class ProfileFragment : Fragment() {
 
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var ivProfileUser: CircleImageView
-    private lateinit var ivUbahFoto: ImageView
+    private lateinit var btnUbahFoto: ImageButton
+    private lateinit var selectedImageFile: File
+
 
     private val PICK_IMAGE_REQUEST = 1
 
@@ -33,7 +44,22 @@ class ProfileFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         ivProfileUser = view.findViewById(R.id.ivProfileUser)
-        ivUbahFoto = view.findViewById(R.id.btnUbahFoto)
+        btnUbahFoto = view.findViewById(R.id.btnUbahFoto)
+
+        selectedImageFile = File(requireContext().cacheDir, "selected_image.jpg")
+
+        if (selectedImageFile.exists()) {
+            // Jika gambar telah dipilih sebelumnya, tampilkan di ivProfileUser
+            val bitmap = BitmapFactory.decodeFile(selectedImageFile.absolutePath)
+            ivProfileUser.setImageBitmap(bitmap)
+        }
+
+        // Menangani klik pada btnUbahFoto
+        btnUbahFoto.setOnClickListener {
+            // Memulai aktivitas pemilihan gambar dari galeri
+            openGalleryForImage()
+        }
+
 
         sharedPreferences =
             requireContext().getSharedPreferences("loginPrefs", Context.MODE_PRIVATE)
@@ -87,4 +113,51 @@ class ProfileFragment : Fragment() {
 //        }
 //    }
     }
+
+    // Contract untuk memilih gambar dari galeri
+    private val getContent =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                // Mengambil gambar yang dipilih dari intent
+                val selectedImageUri = result.data?.data
+                selectedImageUri?.let { uri ->
+                    // Menampilkan gambar di ivProfileUser
+                    ivProfileUser.setImageURI(uri)
+
+                    // Menyimpan gambar ke file untuk penggunaan selanjutnya
+                    //saveImageToFile(uri)
+                }
+            }
+        }
+
+    // Fungsi untuk membuka galeri
+    private fun openGalleryForImage() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        getContent.launch(intent)
+    }
+
+
+//    // Fungsi untuk menyimpan gambar ke file
+//
+//    private fun saveImageToFile(uri: android.net.Uri) {
+//        try {
+//            val inputStream: InputStream? = contentResolver.openInputStream(uri)
+//            val outputStream = FileOutputStream(selectedImageFile)
+//            val buffer = ByteArray(1024)
+//            var bytesRead: Int
+//
+//            bytesRead = inputStream?.read(buffer) ?: 0
+//
+//            while (bytesRead != -1) {
+//                outputStream.write(buffer, 0, bytesRead)
+//                bytesRead = inputStream?.read(buffer) ?: 0
+//            }
+//
+//            inputStream?.close()
+//            outputStream.close()
+//        } catch (e: Exception) {
+//            Log.e("ProfileActivity", "Error saving image to file: ${e.message}")
+//        }
+//    }
+
 }
