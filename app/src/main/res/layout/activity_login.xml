@@ -4,23 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="30dp"
+    android:background="@color/background"
     android:clipToPadding="false"
+    android:paddingHorizontal="30dp"
     tools:context=".activity.LoginActivity">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
                 android:text="Masuk"
-                android:textSize="32sp"
                 android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="32sp"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="30dp" />
 
@@ -31,6 +36,7 @@
                 android:layout_marginTop="14dp"
                 android:text="Silahkan Masukkan E-mail dan Password"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 app:layout_constraintTop_toBottomOf="@+id/textView2"
                 tools:layout_editor_absoluteX="30dp" />
 
@@ -41,6 +47,7 @@
                 android:layout_marginTop="40dp"
                 android:paddingHorizontal="4dp"
                 android:text="Email"
+                android:textColor="#000000"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <EditText
@@ -50,6 +57,8 @@
                 android:layout_marginTop="6dp"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
+                android:textColor="#000000"
+                android:textColorHint="#505050"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/labelEmail" />
@@ -61,7 +70,8 @@
                 android:layout_marginTop="20dp"
                 android:paddingHorizontal="4dp"
                 android:text="Password"
-                app:layout_constraintTop_toBottomOf="@id/etEmail"/>
+                android:textColor="#000000"
+                app:layout_constraintTop_toBottomOf="@id/etEmail" />
 
             <EditText
                 android:id="@+id/etPassword"
@@ -70,6 +80,8 @@
                 android:layout_marginTop="6dp"
                 android:hint="Password"
                 android:inputType="textPassword"
+                android:textColor="#000000"
+                android:textColorHint="#505050"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/labelPassword" />
@@ -80,6 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:text="Masuk"
+                android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
